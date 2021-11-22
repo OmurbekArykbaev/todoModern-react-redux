@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import TodoForm from "./components/TodoForm"
+import Todo from "./components/Todo"
+import { useDispatch, useSelector } from "react-redux"
+import { setTask, toggledTask, deleteTodo } from "./redux/action/taskAction"
 
 function App() {
+  const task = useSelector((state) => state.tasks.todos)
+  const dispatch = useDispatch()
+
+  const addTask = (userInput) => {
+    dispatch(setTask(userInput))
+  }
+
+  const removeTask = (id) => {
+    dispatch(deleteTodo(id))
+  }
+
+  const handleToggle = (id) => {
+    dispatch(toggledTask(id))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="App container">
+      <header>
+        <h1 className="title">Todo-Modern (React Redux)</h1>
       </header>
+
+      <div className="board">
+        <div className="todo-column">
+          {task.map((todo) => {
+            return (
+              <Todo
+                key={todo.id}
+                todo={todo}
+                toggleTask={handleToggle}
+                removeTask={removeTask}
+              />
+            )
+          })}
+        </div>
+
+        <TodoForm addTask={addTask} />
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

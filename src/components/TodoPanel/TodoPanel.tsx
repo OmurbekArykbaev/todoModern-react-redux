@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import TodoType from "../../types/Todo"
 import { addTodo } from "../../redux/todoItemSlice"
+import { Box } from "@mui/material"
 
 const TodoPanel = () => {
   const [inputValue, setInputValue] = useState<string>("")
@@ -17,7 +18,7 @@ const TodoPanel = () => {
     dispatch(addTodo(item))
   }
   return (
-    <div>
+    <Box flex={1} bgcolor={"whiteSmoke"} p={2}>
       <TextField
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
@@ -28,7 +29,7 @@ const TodoPanel = () => {
       <Button onClick={addTodoHandler} variant="contained">
         Add
       </Button>
-    </div>
+    </Box>
   )
 }
 

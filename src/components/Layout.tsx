@@ -1,17 +1,18 @@
-import { Container, Grid } from "@mui/material"
 import { Outlet } from "react-router-dom"
+import Header from "./Header/Header"
+import Sidebar from "./Sidebar/Sidebar"
+import TodoPanel from "./TodoPanel/TodoPanel"
 
 const Layout = () => {
   return (
-    <main>
-      <Container maxWidth="lg">
-        <Grid container spacing={1}>
-          <Grid item xs={10}>
-            <Outlet />
-          </Grid>
-        </Grid>
-      </Container>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Sidebar />
+        <Outlet />
+        <TodoPanel />
+      </main>
+    </>
   )
 }
 

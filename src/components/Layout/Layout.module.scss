@@ -1,0 +1,15 @@
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto;
+
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "header header header header"
+    "sidebar content content toolbar"
+    "footer footer footer footer";
+  justify-content: center;
+  background-color: wheat;
+}

@@ -13,6 +13,9 @@ const TodoPanel = () => {
       id: Date.now(),
       text: inputValue,
       isDone: false,
+      isHot: false,
+      isImportant: false,
+      wasChanched: false,
     }
     dispatch(addTodo(item))
   }

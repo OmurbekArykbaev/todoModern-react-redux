@@ -2,3 +2,9 @@
     Add Main page
     Add Page wich were done
     
+
+
+2. Types Todo
+    Hot Todo
+    Important
+    Was changed

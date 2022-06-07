@@ -1,5 +1,8 @@
 .aside {
-  grid-area: sidebar;
+  background-color: red;
+  width: 200px;
+  position: absolute;
+  left: 0;
   height: 100%;
   border-right: 1px solid #000;
 }

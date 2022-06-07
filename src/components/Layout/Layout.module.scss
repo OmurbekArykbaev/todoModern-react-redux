@@ -5,10 +5,10 @@
   display: grid;
   grid-template-rows: auto;
 
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 100px 1fr 300px;
   grid-template-areas:
     "header header header header"
-    "sidebar content content toolbar"
+    ". content toolbar toolbar"
     "footer footer footer footer";
   justify-content: center;
   background-color: wheat;

@@ -1,10 +1,10 @@
-import { useState } from "react"
+import { FC, useState } from "react"
 import { useDispatch } from "react-redux"
 import TodoType from "../../types/Todo"
 import styles from "./TodoPanel.module.scss"
 import { addTodo } from "../../redux/todoItemSlice"
 
-const TodoPanel = () => {
+const TodoPanel: FC = () => {
   const [inputValue, setInputValue] = useState<string>("")
   const dispatch = useDispatch()
 
@@ -19,6 +19,7 @@ const TodoPanel = () => {
     }
     dispatch(addTodo(item))
   }
+
   return (
     <div className={styles.toolbar}>
       <div className={styles.wrapper}>

@@ -1,17 +1,18 @@
+import { FC } from "react"
 import { useSelector } from "react-redux"
+import Todo from "../../components/Todo/Todo"
 import { RootState } from "../../redux/store"
 import styles from "./Home.module.scss"
 
-const Home = () => {
+const Home: FC = () => {
   const todoArray = useSelector((state: RootState) => state.todo.todos)
 
   return (
     <section className={styles.home}>
-      {" "}
-      <div>
-        <ul>
+      <div className={styles.wrapper}>
+        <ul className={styles.list}>
           {todoArray.map((el) => (
-            <li>{el.text}</li>
+            <Todo key={el.id} {...el} />
           ))}
         </ul>
       </div>

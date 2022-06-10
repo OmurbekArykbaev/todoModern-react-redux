@@ -1,4 +1,12 @@
 .home {
-  background-color: antiquewhite;
   grid-area: content;
+
+  .wrapper {
+  }
+
+  .list {
+    padding: 3rem 2rem;
+    list-style: none;
+    margin: 0;
+  }
 }

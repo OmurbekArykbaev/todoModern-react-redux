@@ -3,7 +3,34 @@
   padding: 0.6rem 0;
   margin: 0 0 2rem 0;
   background-color: #f8ecd1;
-  border-radius: 1rem;
+  border: 0.2rem solid #f8ecd1;
+
+  &.ishot {
+    animation: ishot 1s infinite;
+    @keyframes ishot {
+      0% {
+        border: 0.2rem solid rgba(255, 0, 0, 0.672);
+      }
+      25% {
+        border: 0.2rem solid rgba(255, 0, 0, 0.423);
+      }
+      50% {
+        border: 0.2rem solid rgba(255, 0, 0, 0.19);
+      }
+
+      75% {
+        border: 0.2rem solid rgba(255, 0, 0, 0.488);
+      }
+
+      100% {
+        border: 0.2rem solid rgba(255, 0, 0, 0.763);
+      }
+    }
+  }
+
+  &.isimportant {
+    border: 0.2rem solid green;
+  }
 
   .wrapper {
     display: flex;

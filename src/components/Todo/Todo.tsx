@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 import { BsTrash, BsPencil, BsCalendarCheck } from "react-icons/bs"
 import styles from "./Todo.module.scss"
 
@@ -21,8 +21,19 @@ const Todo: FC<TodoProps> = ({
   wasChanched,
   date,
 }) => {
+  const [animateType, setAnimateType] = useState<string>("")
+
+  useEffect(() => {
+    if (isHot) {
+      setAnimateType(`${styles.todo} ${styles.ishot}`)
+    } else if (isImportant) {
+      setAnimateType(`${styles.todo} ${styles.isimportant}`)
+    } else {
+      setAnimateType(`${styles.todo}`)
+    }
+  }, [isHot, isImportant])
   return (
-    <li className={styles.todo}>
+    <li className={animateType}>
       <div className={styles.wrapper}>
         <div className={styles.content}>
           <h3>{text}</h3>

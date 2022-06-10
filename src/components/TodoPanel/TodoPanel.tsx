@@ -32,6 +32,8 @@ const TodoPanel: FC = () => {
       }
       dispatch(addTodo(todo))
       setInputValue("")
+      setIsHot(false)
+      setIsImportant(false)
     }
   }
 

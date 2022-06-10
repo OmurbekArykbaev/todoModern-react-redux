@@ -36,8 +36,9 @@
         margin-right: 5px;
 
         background-color: transparent;
-        padding: 5px 7px;
-        border: 1px solid #000;
+        // padding: 5px 7px;
+        // border: 1px solid #000;
+        border: none;
         border-radius: 50%;
         cursor: pointer;
 
@@ -58,16 +59,13 @@
   .description {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+
     width: 100%;
 
     span {
       font-size: 12px;
-    }
-
-    span:last-child {
-      position: absolute;
-      right: 0;
+      margin: 0 2rem;
     }
   }
 }

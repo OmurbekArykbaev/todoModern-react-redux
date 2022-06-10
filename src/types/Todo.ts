@@ -5,6 +5,7 @@ interface TodoType {
   isHot: boolean
   isImportant: boolean
   wasChanched: boolean
+  date: string
 }
 
 export default TodoType

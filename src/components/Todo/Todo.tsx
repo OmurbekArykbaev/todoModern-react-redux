@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { BsTrash, BsPencil } from "react-icons/bs"
+import { BsTrash, BsPencil, BsCalendarCheck } from "react-icons/bs"
 import styles from "./Todo.module.scss"
 
 type TodoProps = {
@@ -9,6 +9,7 @@ type TodoProps = {
   isHot: boolean
   isImportant: boolean
   wasChanched: boolean
+  date: string
 }
 
 const Todo: FC<TodoProps> = ({
@@ -18,6 +19,7 @@ const Todo: FC<TodoProps> = ({
   isHot,
   isImportant,
   wasChanched,
+  date,
 }) => {
   return (
     <li className={styles.todo}>
@@ -34,7 +36,9 @@ const Todo: FC<TodoProps> = ({
           </div>
         </div>
         <div className={styles.description}>
-          <span>13:44, 10.06.2022</span>
+          <span>
+            <BsCalendarCheck /> {date}
+          </span>
           <span>was edit</span>
         </div>
       </div>

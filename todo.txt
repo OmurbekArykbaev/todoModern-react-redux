@@ -8,3 +8,11 @@
     Hot Todo
     Important
     Was changed
+
+Colors
+#F8ECD1
+#DEB6AB
+#AC7D88
+#85586F
+
+https://colorhunt.co/palette/f8ecd1deb6abac7d8885586f      

@@ -21,12 +21,28 @@ const TodoPanel = () => {
   }
   return (
     <div className={styles.toolbar}>
-      <input
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        id="standard-basic"
-      />
-      <button onClick={addTodoHandler}>Add</button>
+      <div className={styles.wrapper}>
+        <div className={styles.form}>
+          <input
+            className={styles.input}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            id="standard-basic"
+          />
+          <button className={styles.btn} onClick={addTodoHandler}>
+            Add Todo
+          </button>
+        </div>
+
+        <div className={styles.control}>
+          <button>
+            Hot <span></span>
+          </button>
+          <button>
+            Important <span></span>
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

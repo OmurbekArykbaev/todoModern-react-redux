@@ -5,6 +5,7 @@
   // background-color: red;
 
   .wrapper {
+    height: 170px;
     .form {
       display: flex;
       align-items: center;
@@ -24,7 +25,7 @@
           width: 100%;
           font-size: 18px;
           padding: 0.6rem 2rem 0.6rem 0.4rem;
-          border: none;
+          border: 0.1px solid #deb6ab;
           border-radius: 0.3rem;
 
           &:focus {
@@ -32,6 +33,7 @@
           }
         }
         svg {
+          color: #deb6ab;
           position: absolute;
           right: 10px;
           cursor: pointer;
@@ -39,6 +41,9 @@
       }
 
       .btn {
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
         padding: 0.8rem 1.5rem;
         background-color: #deb6ab;
         color: #f8ecd1;

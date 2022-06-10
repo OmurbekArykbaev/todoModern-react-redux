@@ -32,6 +32,7 @@ const Todo: FC<TodoProps> = ({
       setAnimateType(`${styles.todo}`)
     }
   }, [isHot, isImportant])
+
   return (
     <li className={animateType}>
       <div className={styles.wrapper}>

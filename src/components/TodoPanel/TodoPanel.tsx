@@ -19,8 +19,8 @@ const TodoPanel: FC = () => {
       setErrorMessage("Please write some text!")
       setTimeout(() => setErrorMessage(""), 1000)
     } else {
-      const now = new Date()
-      const time = date.format(now, "DD.MM.YYYY HH:mm")
+      const now: Date = new Date()
+      const time: string = date.format(now, "DD.MM.YYYY HH:mm")
       const todo: TodoType = {
         id: Date.now(),
         text: inputValue,
@@ -44,7 +44,7 @@ const TodoPanel: FC = () => {
     setIsImportant(!isImportant)
   }
 
-  const todoOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const todoOnChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.target.value)
   }
 
@@ -71,6 +71,7 @@ const TodoPanel: FC = () => {
             Add Todo
           </button>
         </div>
+
         {inputValue && (
           <div className={styles.control}>
             <button

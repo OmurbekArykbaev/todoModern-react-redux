@@ -1,7 +1,7 @@
-import React from "react"
+import { FC } from "react"
 import styles from "./Sidebar.module.scss"
 
-const Sidebar = () => {
+const Sidebar: FC = () => {
   return (
     <aside className={styles.aside}>
       <div className={styles.wrapper}>

@@ -2,30 +2,31 @@
   width: 100%;
   padding: 0.6rem 0;
   margin: 0 0 2rem 0;
-  background-color: #f8ecd1;
+  // background-color: #f8ecd1;
   border: 0.2rem solid #f8ecd1;
   -webkit-box-shadow: 0px 0px 18px -2px rgba(0, 0, 0, 0.76);
   box-shadow: 0px 0px 18px -2px rgba(0, 0, 0, 0.76);
+  cursor: pointer;
 
   &.ishot {
-    animation: ishot 1s infinite;
+    animation: ishot 3s infinite;
     @keyframes ishot {
       0% {
-        border: 0.2rem solid rgba(255, 0, 0, 0.672);
+        box-shadow: 0px 0px 18px -2px rgba(255, 0, 0, 0.672);
       }
       25% {
-        border: 0.2rem solid rgba(255, 0, 0, 0.423);
+        box-shadow: 0px 0px 18px -2px rgba(255, 0, 0, 0.423);
       }
       50% {
-        border: 0.2rem solid rgba(255, 0, 0, 0.19);
+        box-shadow: 0px 0px 18px -2px rgba(255, 0, 0, 0.19);
       }
 
       75% {
-        border: 0.2rem solid rgba(255, 0, 0, 0.488);
+        box-shadow: 0px 0px 18px -2px rgba(255, 0, 0, 0.488);
       }
 
       100% {
-        border: 0.2rem solid rgba(255, 0, 0, 0.763);
+        box-shadow: 0px 0px 18px -2px rgba(255, 0, 0, 0.763);
       }
     }
   }
@@ -38,6 +39,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+
+    .check {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      font-size: 28px;
+      color: green;
+    }
   }
 
   .content {
@@ -63,10 +73,9 @@
         align-items: center;
         justify-content: center;
         margin-right: 5px;
+        z-index: 100;
 
         background-color: transparent;
-        // padding: 5px 7px;
-        // border: 1px solid #000;
         border: none;
         border-radius: 50%;
         cursor: pointer;
@@ -79,7 +88,7 @@
         }
 
         svg {
-          font-size: 15px;
+          font-size: 20px;
         }
       }
     }

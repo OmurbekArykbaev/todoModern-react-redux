@@ -1,12 +1,14 @@
-import { ChangeEvent, FC, useState } from "react"
-import { useDispatch } from "react-redux"
+import { ChangeEvent, FC, useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import TodoType from "../../types/Todo"
 import styles from "./TodoPanel.module.scss"
 import { ImCross } from "react-icons/im"
 import { addTodo } from "../../redux/todoItemSlice"
 import date from "date-and-time"
+import { RootState } from "../../redux/store"
 
 const TodoPanel: FC = () => {
+  const editTodo = useSelector((state: RootState) => state.todo.todoEdit)
   const [inputValue, setInputValue] = useState<string>("")
   const [isHot, setIsHot] = useState<boolean>(false)
   const [isImportant, setIsImportant] = useState<boolean>(false)
@@ -47,6 +49,12 @@ const TodoPanel: FC = () => {
   const todoOnChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.target.value)
   }
+
+  useEffect(() => {
+    if (editTodo[0]) {
+      setInputValue(editTodo[0].text)
+    }
+  }, [editTodo])
 
   return (
     <div className={styles.toolbar}>

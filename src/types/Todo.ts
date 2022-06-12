@@ -1,5 +1,5 @@
 interface TodoType {
-  id: number
+  id: string
   text: string
   isDone: boolean
   isHot: boolean

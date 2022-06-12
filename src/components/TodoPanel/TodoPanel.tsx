@@ -24,7 +24,7 @@ const TodoPanel: FC = () => {
       const now: Date = new Date()
       const time: string = date.format(now, "DD.MM.YYYY HH:mm")
       const todo: TodoType = {
-        id: Date.now(),
+        id: String(Date.now()),
         text: inputValue,
         isDone: false,
         isHot: isHot,

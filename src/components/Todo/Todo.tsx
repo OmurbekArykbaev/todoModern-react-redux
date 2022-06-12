@@ -5,13 +5,13 @@ import {
   BsCalendarCheck,
   BsCheckCircleFill,
 } from "react-icons/bs"
-import { MdDoneAll } from "react-icons/md"
 import { useDispatch } from "react-redux"
 import { removeTodo, setDoneTodo } from "../../redux/todoItemSlice"
+import { useNavigate } from "react-router-dom"
 import styles from "./Todo.module.scss"
 
 type TodoProps = {
-  id: number
+  id: string
   text: string
   isDone: boolean
   isHot: boolean
@@ -29,6 +29,7 @@ const Todo: FC<TodoProps> = ({
   wasChanched,
   date,
 }) => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const [animateType, setAnimateType] = useState<string>("")
 
@@ -42,12 +43,15 @@ const Todo: FC<TodoProps> = ({
     }
   }, [isHot, isImportant])
 
-  const removeTodoHandler = (id: number): void => {
+  const removeTodoHandler = (id: string): void => {
     dispatch(removeTodo(id))
   }
 
-  const setDoneTodoHandler = (id: number): void => {
+  const setDoneTodoHandler = (id: string): void => {
     dispatch(setDoneTodo(id))
+  }
+  const editTodoHandler = (id: string) => {
+    navigate(`/edit/${id}`)
   }
 
   return (
@@ -60,7 +64,7 @@ const Todo: FC<TodoProps> = ({
             <button onClick={() => removeTodoHandler(id)}>
               <BsTrash />
             </button>
-            <button>
+            <button onClick={() => editTodoHandler(id)}>
               <BsPencil />
             </button>
           </div>

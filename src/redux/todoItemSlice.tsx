@@ -18,10 +18,10 @@ export const todoItemSlice = createSlice({
     addTodo: (state, action: PayloadAction<TodoType>) => {
       state.todos.push(action.payload)
     },
-    removeTodo: (state, action: PayloadAction<number>) => {
+    removeTodo: (state, action: PayloadAction<string>) => {
       state.todos = state.todos.filter((item) => item.id !== action.payload)
     },
-    setDoneTodo: (state, action: PayloadAction<number>) => {
+    setDoneTodo: (state, action: PayloadAction<string>) => {
       state.todos.map((item): void => {
         if (item.id === action.payload) {
           item.isDone = true
@@ -30,10 +30,15 @@ export const todoItemSlice = createSlice({
         }
       })
     },
-    updateTodo: (state, action: PayloadAction<number>) => {
-      state.todoEdit = state.todoEdit.filter(
-        (item) => item.id === action.payload
-      )
+    updateTodo: (
+      state,
+      action: PayloadAction<{ id: string; text: string }>
+    ) => {
+      state.todos.map((item) => {
+        if (item.id === action.payload.id) {
+          item.text = action.payload.text
+        }
+      })
     },
   },
 })

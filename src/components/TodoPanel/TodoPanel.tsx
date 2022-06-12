@@ -1,14 +1,14 @@
-import { ChangeEvent, FC, useEffect, useState } from "react"
+import { ChangeEvent, FC, useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import TodoType from "../../types/Todo"
 import styles from "./TodoPanel.module.scss"
 import { ImCross } from "react-icons/im"
 import { addTodo } from "../../redux/todoItemSlice"
 import date from "date-and-time"
-import { RootState } from "../../redux/store"
 
 const TodoPanel: FC = () => {
-  const editTodo = useSelector((state: RootState) => state.todo.todoEdit)
+  const btnHotRef = useRef<HTMLButtonElement>(null)
+  const btnImpRef = useRef<HTMLButtonElement>(null)
   const [inputValue, setInputValue] = useState<string>("")
   const [isHot, setIsHot] = useState<boolean>(false)
   const [isImportant, setIsImportant] = useState<boolean>(false)
@@ -41,20 +41,26 @@ const TodoPanel: FC = () => {
 
   const addHotHandler = (): void => {
     setIsHot(!isHot)
+    if (null !== btnHotRef.current) {
+      isHot
+        ? (btnHotRef.current.style.opacity = "1")
+        : (btnHotRef.current.style.opacity = "0.2")
+    }
   }
   const addImportantHandler = (): void => {
     setIsImportant(!isImportant)
+    if (null !== btnImpRef.current) {
+      isImportant
+        ? (btnImpRef.current.style.opacity = "1")
+        : (btnImpRef.current.style.opacity = "0.2")
+    }
   }
 
   const todoOnChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.target.value)
   }
 
-  useEffect(() => {
-    if (editTodo[0]) {
-      setInputValue(editTodo[0].text)
-    }
-  }, [editTodo])
+  useEffect(() => {}, [])
 
   return (
     <div className={styles.toolbar}>
@@ -82,18 +88,16 @@ const TodoPanel: FC = () => {
 
         {inputValue && (
           <div className={styles.control}>
-            <button
-              style={isHot ? { opacity: "0.2" } : { opacity: "1" }}
-              onClick={addHotHandler}
-            >
-              Hot <span></span>
-            </button>
-            <button
-              style={isImportant ? { opacity: "0.2" } : { opacity: "1" }}
-              onClick={addImportantHandler}
-            >
-              Important <span></span>
-            </button>
+            {!isImportant && (
+              <button ref={btnHotRef} onClick={addHotHandler}>
+                Hot <span className={styles.hot}></span>
+              </button>
+            )}
+            {!isHot && (
+              <button ref={btnImpRef} onClick={addImportantHandler}>
+                Important <span className={styles.imp}></span>
+              </button>
+            )}
           </div>
         )}
       </div>

@@ -12,7 +12,6 @@ const Layout: FC = () => {
       <main className={styles.main}>
         <Sidebar />
         <Outlet />
-        <TodoPanel />
       </main>
     </>
   )

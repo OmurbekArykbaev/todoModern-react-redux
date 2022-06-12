@@ -1,46 +1,39 @@
-.toolbar {
-  grid-area: toolbar;
-  width: 100%;
-  padding: 2rem 0;
-  // background-color: red;
+.edit {
+  grid-area: content;
 
   .wrapper {
-    height: 170px;
-    .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & > h1 {
+      font-size: 26px;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    & > form {
+      width: 80%;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: row;
-      margin-bottom: 2rem;
+      flex-direction: column;
+      margin: 2rem 0;
 
-      .input {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50%;
-        position: relative;
-        margin-right: 1rem;
+      & > input {
+        font-size: 18px;
+        padding: 0.6rem 2rem 0.6rem 0.4rem;
+        border: 0.1px solid #deb6ab;
+        border-radius: 0.3rem;
+        margin-bottom: 2rem;
 
-        input {
-          width: 100%;
-          font-size: 18px;
-          padding: 0.6rem 2rem 0.6rem 0.4rem;
-          border: 0.1px solid #deb6ab;
-          border-radius: 0.3rem;
-
-          &:focus {
-            outline: none;
-          }
-        }
-        svg {
-          color: #deb6ab;
-          position: absolute;
-          right: 10px;
-          cursor: pointer;
+        &:focus {
+          outline: none;
         }
       }
 
-      .btn {
+      & > button {
+        width: 30%;
+        margin: 0 auto;
         font-size: 16px;
         font-weight: bold;
         text-transform: uppercase;
@@ -59,7 +52,8 @@
         }
       }
     }
-    .control {
+
+    & > .control {
       width: 100%;
       display: flex;
       // flex-direction: row;
@@ -98,22 +92,6 @@
         .imp {
           background-color: green;
         }
-      }
-    }
-
-    .banner {
-      padding: 0.3rem 1rem;
-      background-color: red;
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      transition: all 1s;
-      z-index: 100;
-
-      h3 {
-        font-size: 16px;
-        text-align: center;
       }
     }
   }

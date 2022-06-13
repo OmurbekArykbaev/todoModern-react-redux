@@ -3,12 +3,12 @@ import TodoType from "../types/Todo"
 
 interface initState {
   todos: TodoType[]
-  todoEdit: TodoType[]
 }
 
 const initialState: initState = {
-  todos: [],
-  todoEdit: [],
+  todos: localStorage.getItem("todos")
+    ? JSON.parse(localStorage.getItem("todos") || "{}")
+    : [],
 }
 
 export const todoItemSlice = createSlice({
@@ -17,9 +17,11 @@ export const todoItemSlice = createSlice({
   reducers: {
     addTodo: (state, action: PayloadAction<TodoType>) => {
       state.todos.push(action.payload)
+      localStorage.setItem("todos", JSON.stringify(state.todos))
     },
     removeTodo: (state, action: PayloadAction<string>) => {
       state.todos = state.todos.filter((item) => item.id !== action.payload)
+      localStorage.setItem("todos", JSON.stringify(state.todos))
     },
     setDoneTodo: (state, action: PayloadAction<string>) => {
       state.todos.map((item): void => {
@@ -29,6 +31,7 @@ export const todoItemSlice = createSlice({
           item.isImportant = false
         }
       })
+      localStorage.setItem("todos", JSON.stringify(state.todos))
     },
     updateTodo: (
       state,
@@ -39,14 +42,16 @@ export const todoItemSlice = createSlice({
         isImportant: boolean
       }>
     ) => {
-      state.todos.map((item) => {
-        if (item.id === action.payload.id) {
-          item.text = action.payload.text
-          item.isHot = action.payload.isHot
-          item.isImportant = action.payload.isImportant
-          item.wasChanched = true
-        }
-      })
+      if (action)
+        state.todos.map((item) => {
+          if (item.id === action.payload.id) {
+            item.text = action.payload.text
+            item.isHot = action.payload.isHot
+            item.isImportant = action.payload.isImportant
+            item.wasChanched = true
+          }
+        })
+      localStorage.setItem("todos", JSON.stringify(state.todos))
     },
   },
 })

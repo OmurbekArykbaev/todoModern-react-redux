@@ -1,7 +1,5 @@
 import { Dispatch, FC, useEffect, useRef } from "react"
 import styles from "./ButtonType.module.scss"
-import { useSelector } from "react-redux"
-import { RootState } from "../../redux/store"
 import TodoType from "../../types/Todo"
 
 type BtnProps = {

@@ -1,4 +1,4 @@
-import { FC, useState } from "react"
+import { FC, MouseEvent, useState } from "react"
 import styles from "./Edit.module.scss"
 import { useSelector, useDispatch } from "react-redux"
 import { RootState } from "../../redux/store"
@@ -17,7 +17,8 @@ const Edit: FC = () => {
   )
   const [inputValue, setInputValue] = useState<string>(todo?.text)
 
-  const addEditTodoHandler = () => {
+  const addEditTodoHandler = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
     if (params.id) {
       dispatch(
         updateTodo({ id: params.id, text: inputValue, isHot, isImportant })
@@ -36,8 +37,9 @@ const Edit: FC = () => {
             onChange={(e) => setInputValue(e.target.value)}
             type="text"
           />
-          <button onClick={() => addEditTodoHandler()}>Edit</button>
+          <button onClick={(e) => addEditTodoHandler(e)}>Edit</button>
         </form>
+
         <ButtonType
           isHot={isHot}
           isImportant={isImportant}

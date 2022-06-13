@@ -9,6 +9,7 @@ import date from "date-and-time"
 const TodoPanel: FC = () => {
   const btnHotRef = useRef<HTMLButtonElement>(null)
   const btnImpRef = useRef<HTMLButtonElement>(null)
+  const inputrRef = useRef<HTMLInputElement>(null)
   const [inputValue, setInputValue] = useState<string>("")
   const [isHot, setIsHot] = useState<boolean>(false)
   const [isImportant, setIsImportant] = useState<boolean>(false)
@@ -60,7 +61,9 @@ const TodoPanel: FC = () => {
     setInputValue(e.target.value)
   }
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    inputrRef.current?.focus()
+  }, [])
 
   return (
     <div className={styles.toolbar}>
@@ -74,6 +77,8 @@ const TodoPanel: FC = () => {
         <div className={styles.form}>
           <div className={styles.input}>
             <input
+              placeholder="Please write some todo..."
+              ref={inputrRef}
               value={inputValue}
               onChange={(e) => todoOnChangeHandler(e)}
               id="standard-basic"
@@ -81,7 +86,7 @@ const TodoPanel: FC = () => {
             <ImCross onClick={() => setInputValue("")} />
           </div>
 
-          <button className={styles.btn} onClick={addTodoHandler}>
+          <button type="submit" className={styles.btn} onClick={addTodoHandler}>
             Add Todo
           </button>
         </div>

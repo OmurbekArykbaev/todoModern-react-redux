@@ -6,7 +6,7 @@ import {
   BsCheckCircleFill,
 } from "react-icons/bs"
 import { useDispatch } from "react-redux"
-import { removeTodo, setDoneTodo } from "../../redux/todoItemSlice"
+import { removeTodo } from "../../redux/todoItemSlice"
 import { useNavigate } from "react-router-dom"
 import styles from "./Todo.module.scss"
 
@@ -47,15 +47,12 @@ const Todo: FC<TodoProps> = ({
     dispatch(removeTodo(id))
   }
 
-  const setDoneTodoHandler = (id: string): void => {
-    dispatch(setDoneTodo(id))
-  }
   const editTodoHandler = (id: string) => {
     navigate(`/edit/${id}`)
   }
 
   return (
-    <li className={animateType} onClick={() => setDoneTodoHandler(id)}>
+    <li className={animateType}>
       <div className={styles.wrapper}>
         {isDone && <BsCheckCircleFill className={styles.check} />}
         <div className={styles.content}>
@@ -73,7 +70,7 @@ const Todo: FC<TodoProps> = ({
           <span>
             <BsCalendarCheck /> {date}
           </span>
-          <span>was edit</span>
+          {wasChanched && <span>was edit</span>}
         </div>
       </div>
     </li>

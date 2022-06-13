@@ -1,11 +1,14 @@
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import styles from "./Edit.module.scss"
 import { useSelector, useDispatch } from "react-redux"
 import { RootState } from "../../redux/store"
 import { useNavigate, useParams } from "react-router-dom"
 import { updateTodo } from "../../redux/todoItemSlice"
+import ButtonType from "../../components/ButtonType/ButtonType"
 
 const Edit: FC = () => {
+  const [isHot, setIsHot] = useState<boolean>(false)
+  const [isImportant, setIsImportant] = useState<boolean>(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const params = useParams()
@@ -16,7 +19,9 @@ const Edit: FC = () => {
 
   const addEditTodoHandler = () => {
     if (params.id) {
-      dispatch(updateTodo({ id: params.id, text: inputValue }))
+      dispatch(
+        updateTodo({ id: params.id, text: inputValue, isHot, isImportant })
+      )
       navigate("/")
     }
   }
@@ -33,14 +38,13 @@ const Edit: FC = () => {
           />
           <button onClick={() => addEditTodoHandler()}>Edit</button>
         </form>
-        <div className={styles.control}>
-          <button>
-            Hot <span className={styles.hot}></span>
-          </button>
-          <button>
-            Important <span className={styles.imp}></span>
-          </button>
-        </div>
+        <ButtonType
+          isHot={isHot}
+          isImportant={isImportant}
+          setIsImportant={setIsImportant}
+          setIsHot={setIsHot}
+          todo={todo}
+        />
       </div>
     </section>
   )

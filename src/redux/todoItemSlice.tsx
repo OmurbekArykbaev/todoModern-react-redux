@@ -32,11 +32,19 @@ export const todoItemSlice = createSlice({
     },
     updateTodo: (
       state,
-      action: PayloadAction<{ id: string; text: string }>
+      action: PayloadAction<{
+        id: string
+        text: string
+        isHot: boolean
+        isImportant: boolean
+      }>
     ) => {
       state.todos.map((item) => {
         if (item.id === action.payload.id) {
           item.text = action.payload.text
+          item.isHot = action.payload.isHot
+          item.isImportant = action.payload.isImportant
+          item.wasChanched = true
         }
       })
     },

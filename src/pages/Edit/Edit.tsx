@@ -1,10 +1,10 @@
-import { FC, MouseEvent, useState } from "react"
-import styles from "./Edit.module.scss"
-import { useSelector, useDispatch } from "react-redux"
-import { RootState } from "../../redux/store"
+import React, { FC, useRef, useState, MouseEvent } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import { updateTodo } from "../../redux/todoItemSlice"
 import ButtonType from "../../components/ButtonType/ButtonType"
+import { RootState } from "../../redux/store"
+import { updateTodo } from "../../redux/todoItemSlice"
+import styles from "./Edit.module.scss"
 
 const Edit: FC = () => {
   const [isHot, setIsHot] = useState<boolean>(false)
@@ -40,13 +40,15 @@ const Edit: FC = () => {
           <button onClick={(e) => addEditTodoHandler(e)}>Edit</button>
         </form>
 
-        <ButtonType
-          isHot={isHot}
-          isImportant={isImportant}
-          setIsImportant={setIsImportant}
-          setIsHot={setIsHot}
-          todo={todo}
-        />
+        <div className={styles.control}>
+          <ButtonType
+            isHot={isHot}
+            isImportant={isImportant}
+            setIsImportant={setIsImportant}
+            setIsHot={setIsHot}
+            todo={todo}
+          />
+        </div>
       </div>
     </section>
   )

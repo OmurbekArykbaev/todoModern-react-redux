@@ -1,14 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import TodoType from "../types/Todo"
 
+type filterType = "all" | "done" | "hot" | "important"
+
 interface initState {
   todos: TodoType[]
+  filteredTodo: filterType
 }
 
 const initialState: initState = {
   todos: localStorage.getItem("todos")
     ? JSON.parse(localStorage.getItem("todos") || "{}")
     : [],
+  filteredTodo: "all",
 }
 
 export const todoItemSlice = createSlice({
@@ -53,11 +57,17 @@ export const todoItemSlice = createSlice({
         })
       localStorage.setItem("todos", JSON.stringify(state.todos))
     },
+
+    // filter
+
+    allTodosFilter: (state, action: PayloadAction<filterType>) => {
+      state.filteredTodo = action.payload
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addTodo, removeTodo, setDoneTodo, updateTodo } =
+export const { addTodo, removeTodo, setDoneTodo, updateTodo, allTodosFilter } =
   todoItemSlice.actions
 
 export default todoItemSlice.reducer

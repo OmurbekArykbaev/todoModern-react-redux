@@ -55,12 +55,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 
-    h3 {
+    & > h3 {
+      display: flex;
+      flex-wrap: wrap;
       font-size: 20px;
       font-weight: 300;
       cursor: pointer;
       transition: all 0.7s;
+
       &:hover {
         transform: scale(1.5);
         color: green;
@@ -109,6 +113,12 @@
     span {
       font-size: 12px;
       margin: 0 2rem;
+    }
+
+    .wasEdit {
+      padding: 2px 6px;
+      border-radius: 8px;
+      background-color: rgba(0, 128, 0, 0.399);
     }
   }
 }

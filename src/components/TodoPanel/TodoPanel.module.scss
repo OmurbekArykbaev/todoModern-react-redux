@@ -1,7 +1,7 @@
 .toolbar {
   grid-area: toolbar;
   width: 100%;
-  padding: 2rem 0;
+  padding-top: 2rem;
   // background-color: red;
 
   .wrapper {
@@ -102,18 +102,37 @@
     }
 
     .banner {
+      display: flex;
       padding: 0.3rem 1rem;
-      background-color: red;
+      background-color: #fad4d4;
+      border: 2px solid #ff5d5d;
+      border-radius: 4px;
       position: fixed;
-      top: 0;
-      left: 50%;
+      top: 40px;
+      right: 0;
       transform: translateX(-50%);
       transition: all 1s;
       z-index: 100;
+      cursor: pointer;
 
       h3 {
+        color: #ff5d5d;
         font-size: 16px;
         text-align: center;
+      }
+
+      span {
+        font-size: 16px;
+        color: #ff5d5d;
+        position: absolute;
+        top: 2px;
+        right: 4px;
+        padding: 0;
+        margin: 0;
+
+        svg {
+          border-radius: 50%;
+        }
       }
     }
   }

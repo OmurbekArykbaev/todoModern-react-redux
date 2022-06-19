@@ -76,7 +76,7 @@ const Todo: FC<TodoProps> = ({
           <span>
             <BsCalendarCheck /> {date}
           </span>
-          {wasChanched && <span>was edit</span>}
+          {wasChanched && <span className={styles.wasEdit}>was edit</span>}
         </div>
       </div>
     </li>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import TodoType from "../../types/Todo"
 import styles from "./TodoPanel.module.scss"
 import { ImCross } from "react-icons/im"
+import { MdClear } from "react-icons/md"
 import { addTodo } from "../../redux/todoItemSlice"
 import date from "date-and-time"
 
@@ -20,13 +21,13 @@ const TodoPanel: FC = () => {
   const addTodoHandler = () => {
     if (!inputValue) {
       setErrorMessage("Please write some text!")
-      setTimeout(() => setErrorMessage(""), 1000)
+      setTimeout(() => setErrorMessage(""), 2000)
     } else {
       const now: Date = new Date()
       const time: string = date.format(now, "DD.MM.YYYY HH:mm")
       const todo: TodoType = {
         id: String(Date.now()),
-        text: inputValue,
+        text: inputValue.slice(0, 45),
         isDone: false,
         isHot: isHot,
         isImportant: isImportant,
@@ -59,6 +60,11 @@ const TodoPanel: FC = () => {
 
   const todoOnChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.target.value)
+    if (e.target.value.length > 45) {
+      setErrorMessage("The input value has restrictions, 45 words!")
+      setTimeout(() => setErrorMessage(""), 4000)
+      setInputValue(inputValue.slice(0, 45))
+    }
   }
 
   useEffect(() => {
@@ -69,8 +75,11 @@ const TodoPanel: FC = () => {
     <div className={styles.toolbar}>
       <div className={styles.wrapper}>
         {errorMessage && (
-          <div className={styles.banner}>
-            <h3>Please write some text!</h3>
+          <div className={styles.banner} onClick={() => setErrorMessage("")}>
+            <h3>{errorMessage}</h3>
+            <span>
+              <MdClear />
+            </span>
           </div>
         )}
 

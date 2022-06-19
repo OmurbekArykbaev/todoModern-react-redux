@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import Banner from "../../components/Banner/Banner"
 import Todo from "../../components/Todo/Todo"
 import TodoPanel from "../../components/TodoPanel/TodoPanel"
 import { RootState } from "../../redux/store"
@@ -34,14 +35,18 @@ const Home: FC = () => {
     <section className={styles.home}>
       <TodoPanel />
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>
-          Total todo in this category {filteredArray.length}
-        </h1>
-        <ul className={styles.list}>
-          {filteredArray.map((el) => (
-            <Todo key={el.id} {...el} />
-          ))}
-        </ul>
+        {filteredArray.length > 0 && (
+          <h1 className={styles.title}>{filteredArray.length} todo</h1>
+        )}
+        {filteredArray.length > 0 ? (
+          <ul className={styles.list}>
+            {filteredArray.map((el) => (
+              <Todo key={el.id} {...el} />
+            ))}
+          </ul>
+        ) : (
+          <Banner />
+        )}
       </div>
     </section>
   )

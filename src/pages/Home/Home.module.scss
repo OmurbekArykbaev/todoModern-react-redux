@@ -2,14 +2,22 @@
   grid-area: content;
 
   .wrapper {
-  }
+    .title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: normal;
+      color: #deb6ab;
+      padding: 0;
+      margin: 0;
+    }
 
-  .list {
-    display: flex;
-    flex-direction: column-reverse;
+    .list {
+      display: flex;
+      flex-direction: column-reverse;
 
-    padding: 3rem 2rem;
-    list-style: none;
-    margin: 0;
+      padding: 3rem 2rem;
+      list-style: none;
+      margin: 0;
+    }
   }
 }

@@ -1,32 +1,46 @@
 .aside {
   background-color: #deb6ab;
-  border-radius: 0 2rem 2rem 0;
-  width: 150px;
-  height: 350px;
-  position: absolute;
+  height: 100%;
+  position: fixed;
   top: 50%;
   left: 0;
-  border-right: 1px solid #000;
   transform: translateY(-50%);
 
   .wrapper {
-    width: 100%;
     height: 100%;
     display: flex;
-    align-items: center;
-  }
-
-  .navbar {
-    display: flex;
     flex-direction: column;
-    list-style: none;
-    margin: 0;
+    justify-content: center;
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      // align-items: flex-start;
 
-    li {
-      color: #fff;
-      font-size: 16px;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
+      li {
+        width: 100px;
+        font-size: 16px;
+        color: #85586f;
+        font-weight: 300;
+        padding: 1rem 0 1rem 2rem;
+        background-color: transparent;
+        border: none;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.5s;
+
+        &.active {
+          color: #deb6ab;
+          background-color: #85586f56;
+        }
+
+        &:hover {
+          color: #deb6ab;
+          background-color: #85586f56;
+          opacity: 0.6;
+        }
+      }
     }
   }
 }

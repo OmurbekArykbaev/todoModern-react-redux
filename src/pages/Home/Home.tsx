@@ -33,7 +33,7 @@ const Home: FC = () => {
 
   return (
     <section className={styles.home}>
-      <TodoPanel />
+      {filteredTodo === "all" && <TodoPanel />}
       <div className={styles.wrapper}>
         {filteredArray.length > 0 && (
           <h1 className={styles.title}>{filteredArray.length} todo</h1>

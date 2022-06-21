@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useEffect, useRef, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import TodoType from "../../types/Todo"
 import styles from "./TodoPanel.module.scss"
 import { ImCross } from "react-icons/im"

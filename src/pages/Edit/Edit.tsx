@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState, MouseEvent } from "react"
+import { FC, useState, MouseEvent } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import ButtonType from "../../components/ButtonType/ButtonType"
@@ -30,6 +30,8 @@ const Edit: FC = () => {
   return (
     <section className={styles.edit}>
       <div className={styles.wrapper}>
+        <button onClick={() => navigate("/")}> {"<"} Back</button>
+
         <h1>Edit Todo {todo.id}</h1>
         <form>
           <input

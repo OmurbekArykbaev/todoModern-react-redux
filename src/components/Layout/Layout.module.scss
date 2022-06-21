@@ -4,13 +4,20 @@
   height: 100%;
   display: grid;
   grid-template-rows: auto;
-
-  grid-template-columns: 100px 1fr 300px;
+  grid-template-columns: 1fr 300px;
   grid-template-areas:
-    "header header header header"
     "toolbar toolbar toolbar toolbar"
-    "content content content content"
-    "footer footer footer footer";
+    "content content content content";
   justify-content: center;
-  // background-color: #85586f;
+
+  @media (max-width: 915px) {
+    width: 100%;
+  }
+
+  @media (max-width: 450px) {
+    grid-template-columns: 300px;
+    grid-template-areas:
+      "toolbar"
+      "content";
+  }
 }

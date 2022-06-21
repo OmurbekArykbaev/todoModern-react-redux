@@ -2,7 +2,7 @@ import { Dispatch, FC, useEffect, useRef } from "react"
 import styles from "./ButtonType.module.scss"
 import TodoType from "../../types/Todo"
 
-type BtnProps = {
+type TBtnProps = {
   isHot: boolean
   isImportant: boolean
   setIsHot: Dispatch<React.SetStateAction<boolean>>
@@ -10,7 +10,7 @@ type BtnProps = {
   todo: TodoType
 }
 
-const ButtonType: FC<BtnProps> = ({
+const ButtonType: FC<TBtnProps> = ({
   isHot,
   isImportant,
   setIsHot,
@@ -42,7 +42,7 @@ const ButtonType: FC<BtnProps> = ({
   useEffect(() => {
     setIsHot(todo.isHot)
     setIsImportant(todo.isImportant)
-  }, [])
+  }, [todo.isHot, todo.isImportant, setIsHot, setIsImportant])
 
   return (
     <div className={styles.root}>

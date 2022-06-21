@@ -28,7 +28,7 @@ export const todoItemSlice = createSlice({
       localStorage.setItem("todos", JSON.stringify(state.todos))
     },
     setDoneTodo: (state, action: PayloadAction<string>) => {
-      state.todos.map((item): void => {
+      state.todos.forEach((item) => {
         if (item.id === action.payload) {
           item.isDone = true
           item.isHot = false
@@ -47,7 +47,7 @@ export const todoItemSlice = createSlice({
       }>
     ) => {
       if (action)
-        state.todos.map((item) => {
+        state.todos.forEach((item) => {
           if (item.id === action.payload.id) {
             item.text = action.payload.text
             item.isHot = action.payload.isHot
